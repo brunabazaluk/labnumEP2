@@ -36,7 +36,7 @@ end
 
 function p_ij = interpola(x, y, x_i, y_j, A)
     xv = [1 (x - x_i) (x - x_i)^2 (x - x_i)^3];
-    yx = [1 (y - y_j) (y - y_j)^2 (y - y_j)^3];
+    yv = [1 (y - y_j) (y - y_j)^2 (y - y_j)^3];
 
-    p_ij = xv * A * yx';
+    p_ij = xv * A * yv';
 end
