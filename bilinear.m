@@ -1,6 +1,4 @@
-#!
-
-function bilinear[]
+function A = bilinear()
 	
 xi1 = xi+h
 yj1 = yj+h
@@ -14,9 +12,5 @@ H = [1 0 0 0;
 %solucao de F = Hx (x os coef a)
 
 A = linsolve(H,F)
-
-%monta o polinomio
-
-
 
 endfunction
