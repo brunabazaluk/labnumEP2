@@ -21,7 +21,8 @@ function decompress(originalImg, k, h, method)
 						%if i == i_ && j == j_
 						%	printf("- (%d, %d)=> %d (Esperado %d)\n", i_, j_, pij, D_(i_, j_));
 						%end
-						D(i_, j_, w) = uint8(pij);
+						
+						D(i_, j_, w) = pij;
 					end
 				end
 				%printf("\n");
