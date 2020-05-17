@@ -14,12 +14,14 @@ function decompress(originalImg, k, h)
 				%printf("(%d, %d) => %d \n", i, j, D_(i, j));
 				for i_ = i:min(i+h-1, m)
 					for j_ = j:min(j+h-1, m)
+
 						pij = interpolaLinear(A, i_, i, j_, j);
 
 						%if i == i_ && j == j_
 						%	printf("- (%d, %d)=> %d (Esperado %d)\n", i_, j_, pij, D_(i_, j_));
 						%end
-						D(i_, j_, w) = uint8(pij);
+						
+						D(i_, j_, w) = pij;
 					end
 				end
 				%printf("\n");
