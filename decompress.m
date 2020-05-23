@@ -58,7 +58,7 @@ function pij = interpolaLinear(A,x,xi,y,yj)
 	pij = A' * v;
 endfunction
 
-function[inter,A] = metodo(method)
+function [inter,A] = metodo(method)
 
 
 	if(method == 1)
@@ -96,7 +96,7 @@ function A = bicubica(M, h, xi, yj, m)
 
 end
 
-function[del] = del_fx(xi,yj,xi1,yj1,h,M,m)
+function [del] = del_fx(xi,yj,xi1,yj1,h,M,m)
 	xi_1 = max(xi-h+1,1);
 	yj_1 = max(yj-h+1,1);
 
@@ -110,7 +110,7 @@ function[del] = del_fx(xi,yj,xi1,yj1,h,M,m)
 		del = ( M(xi1,yj) - M(xi_1,yj) ) / (2*h);
 	end
 end
-function[del] = del_fy(xi,yj,xi1,yj1,h,M,m)
+function [del] = del_fy(xi,yj,xi1,yj1,h,M,m)
 	xi_1 = max(xi-h+1,1);
 	yj_1 = max(yj-h+1,1);
 
@@ -125,7 +125,7 @@ function[del] = del_fy(xi,yj,xi1,yj1,h,M,m)
 	end
 end
 
-function[del] = deldel_fxy(xi,yj,xi1,yj1,h,M,m)
+function [del] = deldel_fxy(xi,yj,xi1,yj1,h,M,m)
 	xi_1 = max(xi-h+1,1);
 	yj_1 = max(yj-h+1,1);
 	yj1 = min(yj+h-1, m);
