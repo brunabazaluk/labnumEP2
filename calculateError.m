@@ -8,7 +8,7 @@ function calculateError(originalImg, decompressedImg)
         mcor_original = imgOriginal(:, :, i);
         mcor_decompress = imgDecompresse(:, :, i);
 
-        erroTotal = erroTotal + (norm(mcor_original)-norm(mcor_decompress))/norm(mcor_original);
+        erroTotal = erroTotal + norm(mcor_original - mcor_decompress)/norm(mcor_original);
     end
 
     erro = erroTotal / 3
