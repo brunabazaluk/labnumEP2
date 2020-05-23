@@ -13,22 +13,15 @@ function decompress(originalImg, k, h, method)
 		for i=1:h:m
 			for j = 1:h:m
 				A = construct(D_, h, i, j, m);
-				%printf("(%d, %d) => %d \n", i, j, D_(i, j));
+
 				for i_ = i:min(i+h-1, m)
 					for j_ = j:min(j+h-1, m)
 						pij = interpolation(A, i_, i, j_, j);
-
-						%if i == i_ && j == j_
-						%	printf("- (%d, %d)=> %d (Esperado %d)\n", i_, j_, pij, D_(i_, j_));
-						%end
-						
 						D(i_, j_, w) = pij;
 					end
 				end
-				%printf("\n");
 			end
 		end
-		%disp("-----------------")
 	end
 	printf("Salvando imagem..\n");
 	D = uint8(D);
@@ -38,10 +31,6 @@ end
 function A = bilinear(M, h, xi, yj, m)
 	xi1 = min(xi+h-1, m);
 	yj1 = min(yj+h-1, m);
-
-	%printf("Ponto interpoladores: (x_i, y_i) = (%d, %d)\n", xi, yj)
-	%printf("Ponto interpoladores + 1: (x_{i+1}, y_{i+1}) = (%d, %d)\n", xi1, yj1)
-	%printf("Valores nas matrizes: %d %d %d %d\n", M(xi,yj), M(xi,yj1), M(xi1,yj), M(xi1,yj1) )
 
 	F = [ M(xi,yj) M(xi,yj1) M(xi1,yj) M(xi1,yj1)];
 
