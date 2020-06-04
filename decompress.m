@@ -1,4 +1,4 @@
-function decompress(originalImg, k, h, method)
+function decompress(originalImg, method, k, h)
 
 	[interpolation,construct] = metodo(method);
 	original = imread(originalImg);
@@ -10,8 +10,8 @@ function decompress(originalImg, k, h, method)
 	for w = 1:3
 		D_ = D(:, :, w);
 		printf("Interpolando cor %d ...\n", w);
-		for i=1:h:m
-			for j = 1:h:m
+		for i=1:h-1:m
+			for j = 1:h-1:m
 				A = construct(D_, h, i, j, m);
 
 				for i_ = i:min(i+h-1, m)
@@ -24,9 +24,8 @@ function decompress(originalImg, k, h, method)
 		end
 	end
 	printf("Salvando imagem..\n");
-	D = uint8(D);
 
-	imwrite(D,"decompressed.png");
+	imwrite(uint8(D),"decompressed.png", "Compression", "none");
 end
 function A = bilinear(M, h, xi, yj, m)
 	xi1 = min(xi+h-1, m);
