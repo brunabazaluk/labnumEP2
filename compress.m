@@ -6,5 +6,5 @@ function compress(originalImg, k)
 
     imagem_comprimida = img(x, y, :);
 
-    imwrite(imagem_comprimida, "compressed.png", "Compression", "none")
+    imwrite(imagem_comprimida, "compressed.png", "Quality", 100);
 end
